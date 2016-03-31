@@ -1,18 +1,22 @@
 ﻿<?php 
 error_reporting(0);
 ?>
-
+/* 
+	Zmiany: $_REQUEST zamiast $_POST --> dziala z linia komend w url
+	dodane wyszukiwanie wg grupy
+	Braki: realID w wynikach wyszukiwania
+*/
 
 <html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" xmlns:b="http://www.google.com/2005/gml/b" xmlns:data="http://www.google.com/2005/gml/data" xmlns:expr="http://www.google.com/2005/gml/expr">
     <head>
-        <title>Test Dawid</title>
+        <title>Chomikuj search v.2</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
 
     </head>
         
 
     <body>
-
+####################### request form #######################################
 	        <form action='' class='search' method="post" >
         szukana fraza: <input class="" type="text" name="q" value="<?php if(isset($_REQUEST['q'])){echo $_REQUEST['q'];}?>" style="width:250px;">
         Strona: <input class="par" type="text" name="p" value="<?php if(isset($_REQUEST['p'])){echo $_REQUEST['p'];}?>">
@@ -104,17 +108,23 @@ if(isset($_REQUEST['szukaj'])){
     echo 'stop:'.date('Y-m-d H:i:s');
 }
 
-
+#################### non optymized MySql Database request and options ################################
 function show_data($data, $all, $i){
     $data = (array)$data;
+// global $hostname, $username, $password, $database, $DBTab;		//import zmiennych do funkcji
+// $conn = new mysqli($hostname, $username, $password, $database);	//start wlasnej DB 
+
     if(!isset($data['IsSalesFile'])){
         return 0;
     }
     if(isset($data['IsSalesFile']) && ($data['IsSalesFile'] != 1 || $all == 1)) {
+        // $sql = "UPDATE $DBTab SET ready='0' WHERE id=$data['Id']";		//ewentualne operacje na wasnej DB
+        // $conn->query($sql);
         echo "<tr><td>".$i."</td><td>".$data['Id']."</td><td><a class='sale_".$data['IsSalesFile']."' href='".$data['Url']."'>".$data['Name'].".".$data['Extension']."</a></td></tr>\n";
         return $i+1;
     }
     else{
         return $i;
     }
+// $conn->close();	//stop wasnej DB
 }
