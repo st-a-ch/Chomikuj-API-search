@@ -1,5 +1,5 @@
 ﻿<?php 
-error_reporting(0);
+//error_reporting(E_ALL);
 ?>
 /* 
 	Zmiany: $_REQUEST zamiast $_POST --> dziala z linia komend w url
@@ -11,36 +11,35 @@ error_reporting(0);
     <head>
         <title>Chomikuj search v.2</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
-
     </head>
         
 
     <body>
 ####################### request form #######################################
-	        <form action='' class='search' method="post" >
+	<form action='' class='search' method="post" >
         szukana fraza: <input class="" type="text" name="q" value="<?php if(isset($_REQUEST['q'])){echo $_REQUEST['q'];}?>" style="width:250px;">
         Strona: <input class="par" type="text" name="p" value="<?php if(isset($_REQUEST['p'])){echo $_REQUEST['p'];}?>">
         Typ: <select name="typ" class="">
-					<option value="All" <?php if($_REQUEST['typ'] == "All"){echo "selected";}?>>All</option>
-					<option value="Video" <?php if($_REQUEST['typ'] == "Video"){echo "selected";}?>>Video</option>
-					<option value="Music" <?php if($_REQUEST['typ'] == "Music"){echo "selected";}?>>Music</option>
-					<option value="Documents" <?php if($_REQUEST['typ'] == "Documents"){echo "selected";}?>>Documents</option>
-					<option value="Archives" <?php if($_REQUEST['typ'] == "Archives"){echo "selected";}?>>Archives</option>
-					<option value="Programs" <?php if($_REQUEST['typ'] == "Programs"){echo "selected";}?>>Programs</option>
-					<option value="Image" <?php if($_REQUEST['typ'] == "Image"){echo "selected";}?>>Image</option>
-					<option value="Others" <?php if($_REQUEST['typ'] == "Others"){echo "selected";}?>>Others</option>
-				</select> 
+		<option value="All" <?php if($_REQUEST['typ'] == "All"){echo "selected";}?>>Wszystko</option>
+		<option value="Video" <?php if($_REQUEST['typ'] == "Video"){echo "selected";}?>>Wideo</option>
+		<option value="Music" <?php if($_REQUEST['typ'] == "Music"){echo "selected";}?>>Muzyka</option>
+		<option value="Documents" <?php if($_REQUEST['typ'] == "Documents"){echo "selected";}?>>Dokumenty</option>
+		<option value="Archives" <?php if($_REQUEST['typ'] == "Archives"){echo "selected";}?>>Archiwa</option>
+		<option value="Programs" <?php if($_REQUEST['typ'] == "Programs"){echo "selected";}?>>Programy</option>
+		<option value="Image" <?php if($_REQUEST['typ'] == "Image"){echo "selected";}?>>Grafika</option>
+		<option value="Others" <?php if($_REQUEST['typ'] == "Others"){echo "selected";}?>>Inne</option>
+	</select> 
         Min Size:<input class="par" type="text" name="min" value="<?php if(isset($_REQUEST['min'])){echo $_REQUEST['min'];}?>">
         Max Size: <input class="par" type="text" name="max" value="<?php if(isset($_REQUEST['max'])){echo $_REQUEST['max'];}?>">
-        Extension<input class="par" type="text" name="ext"> <select name="all">
-          <option value="1" <?php if($_REQUEST['all'] == "1"){echo "selected";}?>>Wszystkie</option>
-          <option value="0" <?php if($_REQUEST['all'] == "0"){echo "selected";}?>>niesprzedażowe</option>
+        Extension<input class="par" type="text" name="ext">
+        Pokaż: <select name="all">
+        	<option value="1" <?php if($_REQUEST['all'] == "1"){echo "selected";}?>>Wszystkie</option>
+		<option value="0" <?php if($_REQUEST['all'] == "0"){echo "selected";}?>>Niesprzedażowe</option>
         </select> 
-        <input type="submit" name="szukaj" value="Szukaj"></form>
-
+        <input type="submit" name="szukaj" value="Szukaj">
+        </form>
     </body>
 </html>
-
 
 <?php
 
