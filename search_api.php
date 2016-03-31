@@ -70,9 +70,9 @@ if(isset($_REQUEST['szukaj'])){
         if($_REQUEST['ext']) {$parameters->FileExtension = $_REQUEST['ext'];}
         if($_REQUEST['max']) {$parameters->MaxSize = $_REQUEST['max'];}
         if($_REQUEST['min']) {$parameters->MinSize = $_REQUEST['min'];}
-
-        $parameters->ApiKey = "TWOJ KLUCZ API";
-
+#####################################################################################################################
+        $parameters->ApiKey = "TWOJ KLUCZ API";		//API KEY
+#####################################################################################################################
         $request = new StdClass;
         $request->searchParams = $parameters;	
         try {$result = $soapClient->Search($request);}
